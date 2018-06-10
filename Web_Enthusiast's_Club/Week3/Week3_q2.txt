@@ -1,0 +1,66 @@
+//Least Common Ancestor
+//https://www.interviewbit.com/problems/least-common-ancestor/ 
+//Sharanya Kamath and M.M.Vikram
+
+void find(TreeNode* A,int key1, int key2, int &flag1, int &flag2)
+{
+    if(flag1==1&&flag2==1)
+    return;
+    
+    if(A==NULL)
+    return;
+    
+    if(A->val==key1)
+    flag1=1;
+    
+    else if(A->val==key2)
+    flag2=1;
+    
+    find(A->right,key1,key2,flag1,flag2);
+    find(A->left,key1,key2,flag1,flag2);
+}
+
+
+TreeNode* solve(TreeNode* A, int key1, int key2)
+{
+    if(A==NULL)
+    return A;
+    
+    int flag=0;
+    if(A->val==key1||A->val==key2)
+    {
+        return A;
+        // flag=1;
+    }
+    
+    TreeNode* x = solve(A->left,key1,key2);
+    TreeNode* y = solve(A->right,key1,key2);
+    
+    if(x!=NULL&&y!=NULL)
+    return A;
+    
+    if(x!=NULL)
+    return x;
+    
+    if(y!=NULL)
+    return y;
+    
+    
+}
+int Solution::lca(TreeNode* A, int B, int C) {
+    
+    
+    int flag1=0,flag2=0;
+    
+    find(A,B,C,flag1,flag2);
+    
+    if((B!=C)&&(flag1==0||flag2==0))
+    return -1;
+    
+    TreeNode* ans = solve(A,B,C);
+    
+    if(ans==NULL)
+    return -1;
+    else
+    return ans->val;
+}
