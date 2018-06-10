@@ -1,23 +1,32 @@
-//Given an array A of n integers, find 3 integers in S such that the sum is closest to a given number.
-//Print the sum of the three integers.
-//Sharanya Kamath and Rakshith G
+//void mergeArrays(int arr1[], int arr2[], int m, int n);
+//You are given the above function declaration. Assume arr1 and arr2 are two sorted arrays with m integers, and n integers respectively.  Also assume, that arr1 has the capacity to hold (m + n) integers. Create the function which stores the contents of arr1 and arr2 in arr1 in sorted order, with O(1) space and O(m + n) time complexity. No need to return arr1, just store the values in arr1.
+//Sharanya Kamath and Aditya Kamath
 
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
-	int n,i,j,k,x,sum=INT_MAX;
-	cin>>n;
-	int A[n];
+	int m,n,i;
+	cin>>m>>n;
+	int arr1[m+n], arr2[n];
+	for(i=0;i<m;i++)
+		cin>>arr1[i];
 	for(i=0;i<n;i++)
-		cin>>A[i];
-	cin>>x;
-	for(i=0;i<n-2;i++){
-		for(j=i+1;j<n-1;j++){
-			for(k=j+1;k<n;k++){
-				if(abs(x-sum)>abs(x-(A[i]+A[j]+A[k])))
-					sum=A[i]+A[j]+A[k];
-			}
+		cin>>arr2[i];
+	
+	for(i=m-1;i>=0;i--)
+		arr1[i+n]=arr1[i];
+
+	int j=n, k=0;
+	for(i=0;i<m+n;i++){
+		if(k<n){
+			if(arr1[j]>arr2[k])
+				arr1[i]=arr2[k], k++;
+			else if(j<m+n)
+				arr1[i]=arr1[j], j++;	
 		}
 	}
-	cout<<sum<<endl;
+
+	for(i=0;i<m+n;i++)
+		cout<<arr1[i]<<" ";
+	cout<<endl;	
 }

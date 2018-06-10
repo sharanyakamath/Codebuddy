@@ -1,0 +1,33 @@
+//The struct represents a node in a linked list. You are given the head of one such linked list. You are tasked with creating a replica of this linked list. Assumptions are next points to the next node in a linked list, random points to a random node in the linked list. Expected time complexity O(N)
+//Sharanya Kamath and Aditya Kamath
+
+struct Node{
+    Node* next;
+    Node* random;
+};
+
+Node* copy(Node *head){
+    Node* a, *t;
+    a=head;
+    while(a!=NULL){
+        t=a->next;
+        a->next=new Node;
+        a->next->next=t;
+        a=a->next->next;
+    }
+    a=head;
+
+    while(a!=NULL){
+        a->next->random=a->random->next;
+        a=a->next?a->next->next:a->next;
+    }
+
+    Node* ans, *replica;
+    replica=head->next;
+    ans=head->next;
+    while(ans!=NULL){
+        ans->next=ans->next?ans->next->next:ans->next;
+        ans=ans->next;
+    }
+    return replica;
+}
