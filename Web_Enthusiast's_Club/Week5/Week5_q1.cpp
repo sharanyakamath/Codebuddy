@@ -3,6 +3,7 @@
 //Sharanya Kamath and Rakshith G
 
 #include <bits/stdc++.h>
+#include <cstdlib>
 using namespace std;
 int main(){
 	int n,i,j,k,x,sum=INT_MAX,sum1,l,r;
@@ -29,7 +30,7 @@ int main(){
 			else 
 				r--;
 		}
-		if(abs(k-sum)>abs(k-sum1))
+		if(abs((long int)(k-sum))>abs(k-sum1))
 			sum=sum1;
 	}
 	
