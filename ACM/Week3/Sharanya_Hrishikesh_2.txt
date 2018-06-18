@@ -1,0 +1,22 @@
+//https://practice.geeksforgeeks.org/problems/count-number-of-subtrees-having-given-sum/1
+
+
+int subtreeSum(Node*);
+int countSubtreesWithSumX(Node* root, int x)
+{
+	if (!root)
+	    return 0;
+	int sum,count;
+	sum=root->data+subtreeSum(root->left)+subtreeSum(root->right);
+	if(sum==x)
+	    count= 1+countSubtreesWithSumX(root->left,x)+countSubtreesWithSumX(root->right,x);
+	else
+	    count= countSubtreesWithSumX(root->left,x)+countSubtreesWithSumX(root->right,x);
+	return count;
+	
+}
+int subtreeSum(Node* root){
+    if(root==NULL)
+        return 0;
+    return root->data+subtreeSum(root->left)+subtreeSum(root->right);
+}

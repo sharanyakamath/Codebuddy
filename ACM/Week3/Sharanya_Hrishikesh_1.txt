@@ -1,0 +1,16 @@
+//https://practice.geeksforgeeks.org/problems/merge-k-sorted-arrays/1
+
+int *mergeKArrays(int arr[][N], int k)
+{
+    int *b = new int[k*k];
+    int i,j,m=0;
+    for(i=0;i<k;i++){
+        for(j=0;j<k;j++){
+            b[m]=arr[i][j];
+            m++;
+        }
+    }
+    sort(b,b+m);
+    return b;
+}
+
