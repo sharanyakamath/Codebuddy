@@ -1,3 +1,6 @@
+//Calculate difficulty of a given sentence. Here a Word is considered hard if it has 4 consecutive consonants or number of consonants are more than number of vowels. Else word is easy. Difficulty of sentence is defined as 5*(number of hard words) + 3*(number of easy words).
+//Sharanya Kamath, Kaushik Kalmady
+
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
