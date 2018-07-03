@@ -5,9 +5,9 @@ int main(){
 	cin>>t;
 	while(t--){
 		int i,j,hard=0,easy=0,vowel=0,cons=0,flag=0;
-		char s[100000];
-		cin.getline(s, 50);
-		int len=strlen(s);
+		string s;
+		getline(cin>>ws,s);
+		int len=s.length();
 		for(i=0;i<=len;i++){
 			if(i==len ||  s[i]==' '){
 				if(flag==1 || cons>vowel)
