@@ -30,6 +30,7 @@ int main(){
 		for(j=0;j<min(word[i].length(),word[i+1].length());j++){
 			if(word[i][j]!=word[i+1][j]){
 				adj[word[i][j]-'a'].push_back(word[i+1][j]-'a');
+				break;
 			}
 		}
 	}
